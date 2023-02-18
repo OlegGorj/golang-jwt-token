@@ -21,11 +21,28 @@ Quick server side example, we define a few routes for our server:
 
 The login function generates a JWT token with a 5-minute expiration time, and includes the username "testuser" in the token's claims. The isAuthorized middleware extracts the JWT token from the client's request, parses it, and checks if it is valid. If the token is valid, the middleware calls the requested endpoint.
 
+To compile binary:
+
+```bash
+cd server
+make init   # init mod & deps
+make build  # build binary
+```
+
 ### Client side
 
 This client uses the `http.PostForm` method to send a username and password to the server's `/login` endpoint and receive a JWT token in the response. 
 The token is then included in the Authorization header of a `GET` request to the server's protected `/protected` endpoint using `http.NewRequest`. 
 Finally, the client reads the response body and prints it to the console.
+
+To compile client binary:
+
+```bash
+cd client
+make init   # init mod & deps
+make build  # build binary
+```
+
 
 Note that this is just a very quick and simple example for demo purposes of how to use JWT tokens in a client-server application.
 In a real-world scenario, we would likely use more secure methods for storing and transmitting tokens, such as HTTPS or secure cookies.
